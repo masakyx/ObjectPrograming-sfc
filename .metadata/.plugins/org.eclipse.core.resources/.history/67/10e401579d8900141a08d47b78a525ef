@@ -5,11 +5,11 @@ public abstract class DrawObject {
 	
 	Point2D median; //重心点の位置
 	double angle; //回転角度（ラジアン角度）
-	double scalex, scaley; //拡大縮小率（マイナスだと鏡像） ★未実装
+	double scalex, scaley; //拡大縮小率（マイナスだと鏡像）
 	AffineTransform at; //アフィン変換のための変数
 	Color framecolor; //枠線のカラー
 	Color fillcolor; //塗りつぶしのカラー
-	double linewidth; //枠線の幅　★未実装
+	double linewidth; //枠線の幅
 	
 	//コンストラクタ
 	public DrawObject(){
