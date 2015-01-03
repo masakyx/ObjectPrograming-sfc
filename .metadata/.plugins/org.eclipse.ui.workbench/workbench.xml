@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="17" version="2.0">
+<workbench progressCount="20" version="2.0">
 <workbenchAdvisor/>
 <window height="744" maximized="true" width="1020" x="57" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -50,7 +50,7 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DrawObject.java" partName="DrawObject.java" path="/home/masaki/workspace/DrawApp1/src/DrawObject.java" title="DrawObject.java" tooltip="DrawApp1/src/DrawObject.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/DrawApp1/src/DrawObject.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1128" selectionTopPixel="637"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1473" selectionTopPixel="637"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DrawOvall.java" partName="DrawOvall.java" path="/home/masaki/workspace/DrawApp1/src/DrawOvall.java" title="DrawOvall.java" tooltip="DrawApp1/src/DrawOvall.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/DrawApp1/src/DrawOvall.java"/>
