@@ -7,17 +7,18 @@ public class DrawApp extends Frame {
 
 
 	// 動作モードを選ぶChoice
-	String  mode [] = { "Select", "Rotate", "Line", "Rectangle", "Oval" }; 
+	String  mode [] = { "Select", "Rotate", "Line", "Rectangle", "Oval" ,"Scale"}; 
 	Choice modeselector;
 	
 	// カラー名のリスト、Noneは描画しないことを示す
 	String colornamelist [ ] = { "None", "Red", "Green", "Blue", "Magenta","Yellow", "Cyan", 
-			"Orange", "Pink", "Black", "White", "Gray" };
+			"Orange", "Pink", "Black", "White", "Gray","lightgray" };
 	Choice  framecolor; 	// フレームカラーを選ぶChoice
 	Choice  fillcolor; // 塗りつぶしカラーを選ぶChoice
 
 	// ラインの太さのリスト
-	String  widthlist [ ]= { "0.5", "1", "2", "3", "4" };
+	String  widthlist [ ]= { "0.5", "1", "2", "3", "4" ,"5","6","7","8","9","10","11","12","13","14",
+			"15","16","17","18","19","20"};
 	Choice linewidth;
 	
 	// モードやプロパティを示すパネル
@@ -83,6 +84,7 @@ public class DrawApp extends Frame {
 		
 		// Choiceをdrawpanelに登録（選択されたときに、自動的に項目が変わるように）
 		drawpanel.registerChoices( framecolor, fillcolor, linewidth );
+		//System.out.println(String.valueOf(linewidth.getSelectedIndex()));
 		setVisible( true );
 	}
 	

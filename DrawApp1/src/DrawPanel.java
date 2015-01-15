@@ -11,7 +11,7 @@ public class DrawPanel extends Panel {
 	ArrayList <DrawObject> objects; // 描画されているオブジェクト
 	DrawObject  selectedObject;  	// 選択されたオブジェクト
 	Color colorlist [] = { null, Color.red, Color.green, Color.blue, Color.magenta, Color.yellow, Color.cyan,
-			Color.orange, Color.pink, Color.black, Color.white, Color.gray };
+			Color.orange, Color.pink, Color.black, Color.white, Color.gray  ,Color.LIGHT_GRAY};
 	Choice framecolor, fillcolor, linewidth;  // プロパティのChoice達
 
 	// コンストラクタ
@@ -32,6 +32,7 @@ public class DrawPanel extends Panel {
 		else if ( m.equals( "Rotate") ) { current = Mode.Rotate; }
 		else if ( m.equals( "Line" ) ) { current = Mode.Line; }
 		else if ( m.equals( "Rectangle" ) ) { current = Mode.Rect; }
+		else if(m.equals("Scale")){current = Mode.Scale;}
 	}
 	
 	// Choiceの登録
@@ -46,8 +47,12 @@ public class DrawPanel extends Panel {
 			objects.get( i ).paint( g );
 		}
 		// 現在描いているオブジェクト
+		
 		g.setColor( Color.blue );
 		Graphics2D g2 = (Graphics2D)g;
+		//線の太さ
+		BasicStroke stroke = new BasicStroke(linewidth.getSelectedIndex());
+		g2.setStroke(stroke);
 		if ( currentLine != null ) { g2.draw( currentLine ); }
 		if ( currentRect != null ) { g2.draw( currentRect ); }
 		
@@ -55,6 +60,7 @@ public class DrawPanel extends Panel {
 		if ( selectedObject != null && current != Mode.Select && current != Mode.Rotate ) { selectedObject = null; }
 		if ( selectedObject != null ) { selectedObject.paintBounds( g ); }
 		if ( selectedObject != null && current == Mode.Rotate ) { selectedObject.paintMedian( g ); }
+		if( selectedObject != null && current == Mode.Scale ){}
 	}
 	
 	// マウスの入力への対処
@@ -62,7 +68,10 @@ public class DrawPanel extends Panel {
 		public void mousePressed( MouseEvent me ) {
 			if ( getMode() == Mode.Line ) { createLine( me.getX(), me.getY() ); }
 			else if ( getMode() == Mode.Rect ) { createRect( me.getX(), me.getY() ); }
-			else if ( getMode() == Mode.Select || getMode() == Mode.Rotate ) { selectObject( me.getX(), me.getY() ); }
+			else if ( getMode() == Mode.Select || getMode() == Mode.Scale ||
+					getMode() == Mode.Rotate ) {
+				selectObject( me.getX(), me.getY() ); 
+				}
 			repaint( );
 		}
 		
@@ -121,6 +130,11 @@ public class DrawPanel extends Panel {
 		selectedObject.setAngle( theta );
 	}
 	
+	void scaleObject(int mx,int my){
+		if(selectedObject == null){return;}
+		
+	}
+	
 	int searchColorIndex( Color target ) {
 		for ( int i=0; i < colorlist.length; i++ ) {
 			if ( colorlist[ i ] == target ) { return i; }
@@ -138,7 +152,7 @@ public class DrawPanel extends Panel {
 		currentLine.setLine( startp.getX(), startp.getY(), mx, my );
 	}
 	void registerLine( int mx, int my ) {
-		objects.add( new DrawLine( startp.getX(), startp.getY(), mx, my, colorlist[ framecolor.getSelectedIndex() ]));
+		objects.add( new DrawLine( startp.getX(), startp.getY(), mx, my, colorlist[ framecolor.getSelectedIndex() ],linewidth.getSelectedIndex()));
 		currentLine = null;
 		startp = null;
 	}
@@ -166,7 +180,7 @@ public class DrawPanel extends Panel {
 		double y = Math.min( sy, my );
 		double w = Math.abs( sx - mx );
 		double h = Math.abs( sy - my );
-		objects.add( new DrawRect( x, y, w, h, colorlist[ framecolor.getSelectedIndex() ], colorlist[ fillcolor.getSelectedIndex() ] ) );
+		objects.add( new DrawRect( x, y, w, h, colorlist[ framecolor.getSelectedIndex() ], colorlist[ fillcolor.getSelectedIndex() ],linewidth.getSelectedIndex() ) );
 		currentRect = null;
 		startp = null;
 	}

@@ -9,7 +9,7 @@ public abstract class DrawObject {
 	AffineTransform at; //アフィン変換のための変数
 	Color framecolor; //枠線のカラー
 	Color fillcolor; //塗りつぶしのカラー
-	double linewidth; //枠線の幅　★未実装
+	float linewidth; //枠線の幅　★未実装
 	
 	//コンストラクタ
 	public DrawObject(){
@@ -18,7 +18,7 @@ public abstract class DrawObject {
 		scalex = scaley = 1.0;
 		at = new AffineTransform();
 		framecolor = Color.black;
-		linewidth = 1.0;
+		linewidth = (float) 1.0;
 	}
 	
 	//Paintメソッドは必要
@@ -46,7 +46,7 @@ public abstract class DrawObject {
 	//回転角度を設定する
 	public void setAngle( double a ) { angle = a; }
 	
-	//回転角度をthetaだけ増やす
+	//回転角度をθだけ増やす
 	public void retate(double theta){
 		angle += theta;
 		}
@@ -60,5 +60,7 @@ public abstract class DrawObject {
 	public void scale(double sx, double sy){
 		scalex *= sx; scaley *= sy;
 	}
+	
+	
 	
 }

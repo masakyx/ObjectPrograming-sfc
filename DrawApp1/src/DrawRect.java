@@ -9,12 +9,13 @@ public class DrawRect extends DrawObject {
 	double height;
 	
 	// コンストラクタ、枠の色と塗り潰しの色を持つ
-	public DrawRect( double x, double y, double w, double h, Color fr, Color fill ) {
+	public DrawRect( double x, double y, double w, double h, Color fr, Color fill ,float lew) {
 		median = new Point2D.Double( x+w/2, y+h/2 );
 		width = w;
 		height = h;
 		framecolor = fr;
 		fillcolor = fill;
+		linewidth = lew;
 	}
 	
 	// 描画メソッド
@@ -27,11 +28,14 @@ public class DrawRect extends DrawObject {
 		at.rotate( angle );
 		at.scale( scalex, scaley );
 		rectarea.transform( at );
+		BasicStroke stroke = new BasicStroke(linewidth);
+		g2.setStroke(stroke);
 		if ( fillcolor != null ) { g2.setColor( fillcolor ); g2.fill( rectarea ); }
 		if ( framecolor != null ) { g2.setColor( framecolor ); g2.draw( rectarea ); }
 	}
 	
 	// 境界領域を示す４つの□を表示する
+
 	public void paintBounds( Graphics g ) {
 		Area  rectarea = new Area( new Rectangle2D.Double( -width/2, -height/2, width, height) );
 		at = new AffineTransform();

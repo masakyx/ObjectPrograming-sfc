@@ -9,7 +9,7 @@ public class DrawLine extends DrawObject {
 	Point2D sp, ep;
 	
 	// コンストラクタ、fcは線の色を示す
-	public DrawLine( double x1, double y1, double x2, double y2, Color fc ) {
+	public DrawLine( double x1, double y1, double x2, double y2, Color fc,float lew) {
 		double medx = (x1 + x2) / 2.0;
 		double medy = (y1 + y2) / 2.0;
 		
@@ -17,6 +17,7 @@ public class DrawLine extends DrawObject {
 		sp = new Point2D.Double( x1-medx, y1-medy );
 		ep = new Point2D.Double( x2-medx, y2-medy );
 		framecolor = fc;
+		linewidth = lew;
 	}
 	
 	// 描画メソッド、一度GeneralPathにして、アフィン変換してから描画
@@ -27,7 +28,29 @@ public class DrawLine extends DrawObject {
 		at.translate( median.getX(), median.getY() );
 		at.rotate( angle );
 		at.scale( scalex, scaley );
+		
+		/*線の太さ
+		/*if(linewidth.getSelectedIndex() == 0.5){
+			BasicStroke stroke = new BasicStroke(10.0f);
+			g2.setStroke(stroke);
+		}else if(linewidth.getSelectedIndex() == 1){
+			BasicStroke stroke = new BasicStroke(10.0f);
+			g2.setStroke(stroke);
+		}else if(linewidth.getSelectedIndex() == 2){
+			BasicStroke stroke = new BasicStroke(10.0f);
+			g2.setStroke(stroke);
+		}else if(linewidth.getSelectedIndex() == 3){
+			BasicStroke stroke = new BasicStroke(10.0f);
+			g2.setStroke(stroke);
+		}else if(linewidth.getSelectedIndex() == 4){
+			BasicStroke stroke = new BasicStroke(10.0f);
+			g2.setStroke(stroke);
+		}*/
+		
+		
 		linepath.transform( at );
+		BasicStroke stroke = new BasicStroke(linewidth);
+		g2.setStroke(stroke);
 		if ( framecolor != null ) { g2.setColor( framecolor ); g2.draw( linepath ); }
 	}
 	
