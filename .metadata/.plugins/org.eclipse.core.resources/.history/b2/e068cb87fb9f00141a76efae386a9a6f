@@ -12,7 +12,7 @@ public abstract class DrawObject {
 	AffineTransform at;//アフィン変換のための変数
 	Color framecolor ;
 	Color fillcolor ;
-	float linewidth;
+	double linewidth;
 	
 	//コンストラクタ
 	public DrawObject(){
@@ -21,7 +21,7 @@ public abstract class DrawObject {
 		scalex=scaley=1.0;
 		at =new AffineTransform();
 		framecolor=Color.black;
-		linewidth=(float) 1.0;
+		linewidth=1.0;
 	}
 	
 	public abstract void paint(Graphics g);

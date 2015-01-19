@@ -151,7 +151,7 @@ public class DrawPanel<Oval2D> extends Panel {
 		currentLine.setLine( startp.getX(), startp.getY(), mx, my );
 	}
 	void registerLine( int mx, int my ) {
-		objects.add( new DrawLine( startp.getX(), startp.getY(), mx, my, colorlist[ framecolor.getSelectedIndex() ],linewidth.getSelectedIndex()));
+		objects.add( new DrawLine( startp.getX(), startp.getY(), mx, my, colorlist[ framecolor.getSelectedIndex() ]));
 		currentLine = null;
 		startp = null;
 	}
@@ -179,7 +179,7 @@ public class DrawPanel<Oval2D> extends Panel {
 		double y = Math.min( sy, my );
 		double w = Math.abs( sx - mx );
 		double h = Math.abs( sy - my );
-		objects.add( new DrawRect( x, y, w, h, colorlist[ framecolor.getSelectedIndex() ], colorlist[ fillcolor.getSelectedIndex() ],linewidth.getSelectedIndex() ) );
+		objects.add( new DrawRect( x, y, w, h, colorlist[ framecolor.getSelectedIndex() ], colorlist[ fillcolor.getSelectedIndex() ] ) );
 		currentRect = null;
 		startp = null;
 	}
@@ -206,7 +206,7 @@ public class DrawPanel<Oval2D> extends Panel {
 			double y = Math.min( sy, my );
 			double w = Math.abs( sx - mx );
 			double h = Math.abs( sy - my );
-			objects.add( new DrawOval( x, y, w, h, colorlist[ framecolor.getSelectedIndex() ], colorlist[ fillcolor.getSelectedIndex() ],linewidth.getSelectedIndex() ) );
+			objects.add( new DrawOval( x, y, w, h, colorlist[ framecolor.getSelectedIndex() ], colorlist[ fillcolor.getSelectedIndex() ] ) );
 			currentOval = null;
 			startp = null;
 		}

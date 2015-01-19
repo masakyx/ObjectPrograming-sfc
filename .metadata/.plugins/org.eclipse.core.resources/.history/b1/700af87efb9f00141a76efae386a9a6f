@@ -51,9 +51,6 @@ public class DrawPanel<Oval2D> extends Panel {
 		// 現在描いているオブジェクト
 		g.setColor( Color.blue );
 		Graphics2D g2 = (Graphics2D)g;
-		//線の太さ
-		BasicStroke stroke = new BasicStroke(linewidth.getSelectedIndex());
-		g2.setStroke(stroke);
 		if ( currentLine != null ) { g2.draw( currentLine ); }
 		if ( currentRect != null ) { g2.draw( currentRect ); }
 		if (currentOval !=null) {g2.draw(currentOval);}
@@ -151,7 +148,7 @@ public class DrawPanel<Oval2D> extends Panel {
 		currentLine.setLine( startp.getX(), startp.getY(), mx, my );
 	}
 	void registerLine( int mx, int my ) {
-		objects.add( new DrawLine( startp.getX(), startp.getY(), mx, my, colorlist[ framecolor.getSelectedIndex() ],linewidth.getSelectedIndex()));
+		objects.add( new DrawLine( startp.getX(), startp.getY(), mx, my, colorlist[ framecolor.getSelectedIndex() ]));
 		currentLine = null;
 		startp = null;
 	}
@@ -179,7 +176,7 @@ public class DrawPanel<Oval2D> extends Panel {
 		double y = Math.min( sy, my );
 		double w = Math.abs( sx - mx );
 		double h = Math.abs( sy - my );
-		objects.add( new DrawRect( x, y, w, h, colorlist[ framecolor.getSelectedIndex() ], colorlist[ fillcolor.getSelectedIndex() ],linewidth.getSelectedIndex() ) );
+		objects.add( new DrawRect( x, y, w, h, colorlist[ framecolor.getSelectedIndex() ], colorlist[ fillcolor.getSelectedIndex() ] ) );
 		currentRect = null;
 		startp = null;
 	}
@@ -206,7 +203,7 @@ public class DrawPanel<Oval2D> extends Panel {
 			double y = Math.min( sy, my );
 			double w = Math.abs( sx - mx );
 			double h = Math.abs( sy - my );
-			objects.add( new DrawOval( x, y, w, h, colorlist[ framecolor.getSelectedIndex() ], colorlist[ fillcolor.getSelectedIndex() ],linewidth.getSelectedIndex() ) );
+			objects.add( new DrawOval( x, y, w, h, colorlist[ framecolor.getSelectedIndex() ], colorlist[ fillcolor.getSelectedIndex() ] ) );
 			currentOval = null;
 			startp = null;
 		}
