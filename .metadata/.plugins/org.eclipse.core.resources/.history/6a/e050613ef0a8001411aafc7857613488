@@ -26,12 +26,12 @@ public class TextEditorApp extends JFrame implements ChangeListener, ItemListene
 	MenuBar  bar;
 	LineNumberedTextArea  textarea;
 	JFrame jf = new JFrame("置換");
-	JTextField text1 = new JTextField("置換前の文字列を入力してください");
-    JTextField text2 = new JTextField("置換後の文字列を入力してください");
+	JTextField text1 = new JTextField();
+    JTextField text2 = new JTextField();
     JButton btn = new JButton("置換");
     JButton btn2 = new JButton("検索");
     JFrame jf2 = new JFrame("検索");
-    JTextField text3 = new JTextField("検索文字列を入力してください");
+    JTextField text3 = new JTextField();
 	
 	
 	public TextEditorApp( ) {
@@ -167,15 +167,15 @@ public class TextEditorApp extends JFrame implements ChangeListener, ItemListene
 			}else if(ae.getActionCommand().equals("RePlace")){
 				jf.setVisible(true);
 				
-			}else if(ae.getActionCommand().equals("SEARCH")){
+			}else if(ae.getActionCommand().equals("SERCH")){
 				jf2.setVisible(true);
 			}
 			else if(ae.getActionCommand().equals("Btn")){
 					
 					textarea.RePlace(text1.getText(),text2.getText());	
-			}else if(ae.getActionCommand().equals("Btn2")){
+				}else if(ae.getActionCommand().equals("Btn2")){
 					System.out.println("Search!");
-					String str[] = {text3.getText(),"win"};
+					String str[] = {text1.getText(),"win"};
 					textarea.Search(str);
 				
 			}

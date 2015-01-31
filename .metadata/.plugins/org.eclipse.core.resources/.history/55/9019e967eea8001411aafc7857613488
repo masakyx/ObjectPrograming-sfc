@@ -16,10 +16,6 @@ import  javax.swing.*;
 import  javax.swing.event.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import  javax.swing.table.*;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultHighlighter;
-import javax.swing.text.Document;
-import javax.swing.text.Highlighter;
 
 public class LineNumberedTextArea extends JTextArea{
 
@@ -223,27 +219,6 @@ public class LineNumberedTextArea extends JTextArea{
 			}
 			
 		}
-		void Search(String str[]){
-			Highlighter.HighlightPainter[] highlightPainter = {
-					  new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW),
-					  new DefaultHighlighter.DefaultHighlightPainter(Color.CYAN)
-					};
-					 try{
-					    Highlighter hilite = textarea.getHighlighter();
-					    hilite.removeAllHighlights();
-					    Document doc = textarea.getDocument();
-					    String text = doc.getText(0, doc.getLength());
-					    for (int i = 0; i < str.length; i++) {
-					      int pos = 0;
-					      while ((pos = text.indexOf(str[i], pos)) >= 0) {
-					        hilite.addHighlight(pos, pos+str[i].length(), highlightPainter[i]);
-					        pos += str[i].length();
-					      }
-					    }
-					 }catch (BadLocationException e) {
-						    e.printStackTrace();
-					  }
-		}
 		
+	
 }
-

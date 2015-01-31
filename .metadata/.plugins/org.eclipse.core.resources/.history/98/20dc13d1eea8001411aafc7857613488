@@ -25,13 +25,10 @@ public class TextEditorApp extends JFrame implements ChangeListener, ItemListene
 	Menu  menu;
 	MenuBar  bar;
 	LineNumberedTextArea  textarea;
-	JFrame jf = new JFrame("置換");
-	JTextField text1 = new JTextField("置換前の文字列を入力してください");
-    JTextField text2 = new JTextField("置換後の文字列を入力してください");
-    JButton btn = new JButton("置換");
-    JButton btn2 = new JButton("検索");
-    JFrame jf2 = new JFrame("検索");
-    JTextField text3 = new JTextField("検索文字列を入力してください");
+	JFrame jf = new JFrame("検索・置換");
+	JTextField text1 = new JTextField();
+    JTextField text2 = new JTextField();
+    JButton btn = new JButton("検索・置換");
 	
 	
 	public TextEditorApp( ) {
@@ -43,14 +40,14 @@ public class TextEditorApp extends JFrame implements ChangeListener, ItemListene
 		
 		//置換
 		jf.setSize(400,100);
-		jf2.setSize(400,70);
-		
+	    
+	    
+	    
+	   
+
 	    jf.add(text1, BorderLayout.NORTH);
 	    jf.add(text2, BorderLayout.CENTER);
 	    jf.add(btn, BorderLayout.SOUTH);
-	    
-	    jf2.add(text3,BorderLayout.NORTH);
-	    jf2.add(btn2,BorderLayout.SOUTH);
 		
 	    
 	    
@@ -85,7 +82,7 @@ public class TextEditorApp extends JFrame implements ChangeListener, ItemListene
 		
 		// Fileメニューをメニューバーに追加する
 		menu = new Menu( "File" );
-		for ( String item: new String [] {"NEW", "OPEN","OVERWRITE","SAVE AS","CUT","COPY","PASTE","RePlace","SEARCH"} ) {
+		for ( String item: new String [] {"NEW", "OPEN","OVERWRITE","SAVE AS","CUT","COPY","PASTE","RePlace"} ) {
 			MenuItem mi = new MenuItem( item );
 			mi.setActionCommand( item );
 			mi.addActionListener( new MyActionAdapter( ) );
@@ -135,8 +132,6 @@ public class TextEditorApp extends JFrame implements ChangeListener, ItemListene
 		public void actionPerformed( ActionEvent ae ) {
 			btn.addActionListener(this);
 		    btn.setActionCommand("Btn");
-		    btn2.addActionListener(this);
-		    btn2.setActionCommand("Btn2");
 			//MyEditFileAccess mefa = new MyEditFileAccess();
 			if(ae.getActionCommand().equals("NEW")){
 				setTitle("新規文書");
@@ -167,16 +162,14 @@ public class TextEditorApp extends JFrame implements ChangeListener, ItemListene
 			}else if(ae.getActionCommand().equals("RePlace")){
 				jf.setVisible(true);
 				
-			}else if(ae.getActionCommand().equals("SEARCH")){
-				jf2.setVisible(true);
-			}
-			else if(ae.getActionCommand().equals("Btn")){
-					
+			}else if(ae.getActionCommand().equals("Btn")){
+				if(text2.getText() != null){
 					textarea.RePlace(text1.getText(),text2.getText());	
-			}else if(ae.getActionCommand().equals("Btn2")){
+				}else{
 					System.out.println("Search!");
-					String str[] = {text3.getText(),"win"};
+					String str[] = {text1.getText(),"win"};
 					textarea.Search(str);
+				}
 				
 			}
 		}
