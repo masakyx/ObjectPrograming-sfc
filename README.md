@@ -1,2 +1,2 @@
 # ObjectPrograming-sfc
-This is my program of class which is Object-Programing
+This is my program of the class which is Object-Programing
